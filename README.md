@@ -16,7 +16,7 @@
 
 ## マシンの前提条件
 
-* デモに必要な画像やコードサンプルを入手するには、このリポジトリをローカルマシンに複製してください: ```git clone https://github.com/amynic/AINights.git``` または 'Clone or Download' の緑のボタンで 'Download ZIP' を選択してダウンロードします。（**訳注**: 英語版のコンテンツは [https://github.com/amynic/AINights](https://github.com/amynic/AINights) を参照してください）
+* デモに必要な画像やコードサンプルを入手するために、'Clone or Download' (緑のボタン) > 'Download ZIP' を選択してダウンロードします。または、このリポジトリをローカルマシンに複製してください: `git clone https://github.com/seosoft/AINightsBegineerTrack-JP.git`  
 * [Microsoft Azure サブスクリプション](https://azure.microsoft.com/ja-jp/free/)
 * モダンブラウザー(Google Chrome, Microsoft Edge)
 * [Postman, API Development Environment - available on Windows, Linux and macOS](https://www.getpostman.com/downloads/)
@@ -31,49 +31,52 @@
 
 ![Computer Vision website Link highlighted](/docs-images/computer-vision-link.JPG)
 
-各セクションでは、多くの異なるデモを試せます（Vision、OCR、Face、Emotioni Detectionn、VideoIndexer などでのシーンとアクティビティの認識）
+各セクションで、多くの異なるデモを試せます（Vision、OCR、Face、Emotioni Detectionn、VideoIndexer でのシーンとアクティビティの認識など）。
 
 **Computer Vision** の **画像内のシーンおよびアクティビティ認識** の横にある **デモ** リンクを選択します。他のサービスを探索するためのデモリンクもあります。
 
 ![Computer Vision Example](/docs-images/computer-vision-demo.JPG)
 
-次に、**参照** ボタンを選択して、sample-images/computer-vision-web-browser から cat.jpeg または city.jpeg の画像をアップロードします。 ```sample-images/computer-vision-web-browser/cat.jpeg```
+次に、**参照** ボタンを選択して、`sample-images/computer-vision-web-browser/` から cat.jpeg または city.jpeg の画像をアップロードしてみましょう。画像の分析結果を見ることができます。
 
 ![Computer Vision Cat Example](/docs-images/cat-sample.JPG)
 
-## タスク 2: Microsoft Azure Cognitive Services - REST 経由で Text Analytics
+## タスク 2: Microsoft Azure Cognitive Services - REST 経由で Text Analytics を利用
 
-今度は、これらのサービスをアプリケーションに統合するために使用するのと同じ REST プロトコルを使用してみます。
+次は、Cognitive Services をアプリケーションに統合するために使われる REST プロトコルを利用します。
 
-最初に [Microsoft Azure](https://azure.microsoft.com/ja-jp/) に接続して、右上にある **ポータル** を選択します。
+まず、[Microsoft Azure](https://azure.microsoft.com/ja-jp/) に接続して、右上にある **ポータル** を選択します。
 
 ポータルで **リソースの作成** を選択します。**Cognitive Services** を検索して選択します。そのあと、ブレードで **作成** を選択します。
 
 ![Create Cognitive Services Account](/docs-images/cognitive-azure.JPG)
 
-詳細を入力してアカウントを作成します:
+以下を参考に詳細を入力してアカウントを作成します:
 
-* **Name:** サービスに適した名前を入力してください (例: ainightscognitive)
-* **サブスクリプション:** サブスクリプションを選択してください
-* **場所:** もっとも近いデータセンターを選択してください
+* **Name:** サービスに適した任意の名前を入力 (例: `ai-nights-cognitive`)
+* **サブスクリプション:** サブスクリプションを選択
+* **場所:** 任意の場所を選択（日本リージョンの利用も可能です）
 * **Pricing Tier:** S0
-* **Resource Group:** '新規選択' を選択して、意味のある名前を入力します (例: ainights)
-* **あとに続く、利用規約ボックスに同意します**
-* **'作成' を選択します**
+* **Resource Group:** '新規選択' を選択して、任意の名前を入力 (例: `ai-nights-RG`)
+* **利用規約ボックスに同意した上で、チェックをオン**
+* **'作成' を選択**
 
 ![Cognitive Services Details](/docs-images/cognitive-details.JPG)
 
-作成されたら、通知領域（画面の右上）の **go to resource** を選択します
+作成されたら、通知領域（画面の右上）の **Go to resource** を選択します。
+
 ![リソースに移動](/docs-images/go-to-resource.JPG)
 
-Cognitive Services ページで **Keys** を選択して、**KEY 1** をコピーします
+Cognitive Services ページで **Keys** を選択して、**KEY 1** をコピーし、メモ帳などに貼っておきます。
+
 ![Copy Key](/docs-images/keys.JPG)
 
-左上の *Overview** を選択して、**Endpoint** の値をコピーします
+左上の *Overview* を選択して、**Endpoint** の値をコピーし、メモ帳などに貼っておきます。
 ![Copy Endpoint](/docs-images/endpoint.JPG)
 
-Postman をローカルマシンにダウンロードして開きます
-> ダウンロードは **マシンの前提条件** を参照
+Postman をローカルマシンにダウンロードして開きます。
+
+> ダウンロード方法は、前述の **マシンの前提条件** を参照
 
 **Request** を選択します。
 
@@ -87,26 +90,27 @@ Postman をローカルマシンにダウンロードして開きます
 
 ![Save Request](/docs-images/save.JPG)
 
-Text Analytics API を呼び出すリクエストを作成します:
-* 左上の GET リクエストから POST リクエストに変更します
-* Cognitive Services の Endpoint URL を入力して、末尾に以下を追加します ```text/analytics/v2.0/sentiment```
-* URL テキストボックスの下の **Headers** を選択します
-* **Key** に ```Ocp-Apim-Subscription-Key``` を入力して、**Value** に KEY1 の値を入力します
-* **Key** に ```Content-Type``` を入力して、**Value** に ```application/json``` を入力します
+以下の手順で Text Analytics API を呼び出すリクエストを作成します:
+
+* 左上の GET リクエストから **POST** リクエストに変更
+* Cognitive Services の Endpoint URL を入力して、末尾に次の値を追加: `text/analytics/v2.0/sentiment`
+* URL テキストボックスの下の **Headers** を選択
+* **Key** に `Ocp-Apim-Subscription-Key` を入力、**Value** に KEY1 の値を入力
+* **Key** に `Content-Type` を入力、**Value** に `application/json` と入力
 * ![Headers and URL](/docs-images/url-and-headers.JPG)
-* URL テキストボックスの下の **Body** を選択します
-* ラジオボタンの ```raw``` を選択します
-* ```sample-code/text-analytics-demo/sentiment-analysis-text.json``` の JSON のサンプルをテキストボックスに貼り付けます
-* **Send** ボタンを選択して、レスポンスを見ます
+* URL テキストボックスの下の **Body** を選択
+* ラジオボタンの `raw` を選択
+* `sample-code/cognitive-services-api-task/sentiment-analysis-text.json` の JSON のサンプルをテキストボックスに貼り付けます
+* **Send** ボタンを選択して、レスポンスを確認しましょう
 * ![Body and Submit REST Request](/docs-images/rest-body.JPG)
 
 KeyPhrases 関数など、REST API から他のオプションを試すこともできます。 URLの末尾を "sentiment" から "keyPhrases" に変更し、"Send" を選択してサンプルテキストのキーフレーズを表示します。
 
 * ![Key Phrases REST Request](/docs-images/keyphrases.JPG)
 
-> [ここ](https://docs.microsoft.com/ja-jp/azure/cognitive-services/text-analytics/language-support) で Text Analytics API の言語サポートをチェックしてください。あなたの言語がサポートされている場合は、テキストを翻訳して上記の API の機能を表示するために JSON ファイルを編集してください。フランス語のJSONファイルの例が ```sample-code/text-analytics-demo/sentiment-analysis-text-fr.json``` にあります。このファイルを適切に編集してください。
+> [こちら](https://docs.microsoft.com/ja-jp/azure/cognitive-services/text-analytics/language-support)で Text Analytics API の言語サポートをチェックしてください。あなたの言語がサポートされている場合は、テキストを翻訳して上記の API の機能を表示するために JSON ファイルを編集してください。フランス語のJSONファイルの例が ```sample-code/text-analytics-demo/sentiment-analysis-text-fr.json``` にあります。このファイルを適切に編集してください。
 
-> Postman の実行に問題がある場合は、[センチメント分析](https://northeurope.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) および [キーフレーズ抽出](https://northeurope.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) の API ドキュメント内でいつでも REST API 要求を実行できます。使用しているデータセンターを選択し、Postman で使用したサンプル本体のサンプルと、Key を入力します。
+> Postman の実行に問題がある場合は、[センチメント分析](https://northeurope.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) および [キーフレーズ抽出](https://northeurope.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) の API ドキュメントで REST API を実行できます。サイトで内で使用するデータセンターを選択し、Postman で使用した JSON のサンプルと Key を入力して実行してみましょう。
 
 ## タスク 3: Microsoft Azure Cognitive Services - Custom Vision
 
@@ -143,7 +147,7 @@ Microsoft Azure Custom Vision サービスを使用すると、ごくわずか�
 
 > 続行するには、利用規約ボックスに同意してください
 
-ロードされたら 'NEW PROJECT' を選択して詳細入力ウィンドウを開きます。
+ロードされたら 'NEW PROJECT' を選択して詳細入力ウィンドウを開き。
 
 * Name: 適切な名前を入力
 * Description: 分類器の説明を入力（例は、下の画像に示します）
