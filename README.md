@@ -6,7 +6,13 @@
 
 **タイトル:** 見る、聞く、話す、または理解することができるアプリケーションを、Microsoft Cognitive Services で作成する
 
-**概要:** このワークショップでは、[Microsoft Azure Cognitive Services](https://azure.microsoft.com/ja-jp/services/cognitive-services/) を紹介します。これは、コードを最初から構築する必要なく、インテリジェンスと機械学習をアプリケーションに組み込むために使用できるサービス群です。事前に訓練されたAI APIについて説明します。例えば、[Computer Vision](https://azure.microsoft.com/ja-jp/services/cognitive-services/directory/vision/) や [Text Analytics](https://azure.microsoft.com/ja-jp/services/cognitive-services/directory/lang/) などあります。これらは REST プロトコルでアクセスできるものです。つぎに、これらの [モデルをコンテナー](https://docs.microsoft.com/ja-jp/azure/cognitive-services/cognitive-services-container-support) でホストする方法を調べて、Cognitive Services をオフラインおよびエッジデバイスで実行できるようにします。最後に、転移学習を使用するカスタム AI - [Microsoft Azure Custom Vision](https://azure.microsoft.com/ja-jp/services/cognitive-services/custom-vision-service/) に飛び込みます。Custom Vision は、画像分類モデルをトレーニングするために独自のデータをの少量用意するだけでよくなります。独自のトレーニングを受けた AI をアプリケーションに組み込んでワークショップを締めくくります。[Logic Apps](https://azure.microsoft.com/ja-jp/services/logic-apps/) は機械学習についての概念実証に理想的です。
+**概要:** このワークショップでは、まず、[Microsoft Azure Cognitive Services](https://azure.microsoft.com/ja-jp/services/cognitive-services/) を紹介します。Cognitive Servicesは、スクラッチでコーディングすることなく、インテリジェンスと機械学習をアプリケーションに組み込むために使用できるサービス群です。例えば、[Computer Vision](https://azure.microsoft.com/ja-jp/services/cognitive-services/directory/vision/) や [Text Analytics](https://azure.microsoft.com/en-gb/services/cognitive-services/directory/lang/) は、事前に学習済みの AI の API で、REST プロトコルによってアクセスできます。
+
+次に、Cognitive Services をオフラインおよびエッジデバイスで実行できるようにするために、Cognitive Services を[コンテナーでのホストする](hhttps://docs.microsoft.com/ja-jp/azure/cognitive-services/cognitive-services-container-support)方法を説明します。
+
+次に、転移学習を使用しているカスタム AI - [Custom Vision](https://azure.microsoft.com/en-gb/services/cognitive-services/custom-vision-service/) を見ていきます。Custom Vision は、画像分類モデルをトレーニングするために独自のデータをの少量用意するだけでよくなります。
+
+ワークショップの締めくくりとして、独自に学習した AI を組み込んだアプリケーションを構築します。ここで利用する [Logic Apps](https://azure.microsoft.com/ja-jp/services/logic-apps/) は機械学習についての概念実証に理想的です。
 
 ## マシンの前提条件
 
