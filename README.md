@@ -8,9 +8,9 @@
 
 **概要:** このワークショップでは、まず、[Microsoft Azure Cognitive Services](https://azure.microsoft.com/ja-jp/services/cognitive-services/) を紹介します。Cognitive Servicesは、スクラッチでコーディングすることなく、インテリジェンスと機械学習をアプリケーションに組み込むために使用できるサービス群です。例えば、[Computer Vision](https://azure.microsoft.com/ja-jp/services/cognitive-services/directory/vision/) や [Text Analytics](https://azure.microsoft.com/en-gb/services/cognitive-services/directory/lang/) は、事前に学習済みの AI の API で、REST プロトコルによってアクセスできます。
 
-次に、Cognitive Services をオフラインおよびエッジデバイスで実行できるようにするために、Cognitive Services を[コンテナーでのホストする](hhttps://docs.microsoft.com/ja-jp/azure/cognitive-services/cognitive-services-container-support)方法を説明します。
+次に、Cognitive Services をオフラインおよびエッジデバイスで実行できるようにするために、Cognitive Services を[コンテナーでホストする](hhttps://docs.microsoft.com/ja-jp/azure/cognitive-services/cognitive-services-container-support)方法を説明します。
 
-次に、転移学習を使用しているカスタム AI - [Custom Vision](https://azure.microsoft.com/en-gb/services/cognitive-services/custom-vision-service/) を見ていきます。Custom Vision は、画像分類モデルをトレーニングするために独自のデータをの少量用意するだけでよくなります。
+次に、転移学習を使用しているカスタム AI - [Custom Vision](https://azure.microsoft.com/en-gb/services/cognitive-services/custom-vision-service/) を見ていきます。Custom Vision は、画像分類モデルをトレーニングするために独自のデータを少量用意するだけでよくなります。
 
 ワークショップの締めくくりとして、独自に学習した AI を組み込んだアプリケーションを構築します。ここで利用する [Logic Apps](https://azure.microsoft.com/ja-jp/services/logic-apps/) は機械学習についての概念実証に理想的です。
 
@@ -31,7 +31,7 @@
 
 ![Computer Vision website Link highlighted](/docs-images/computer-vision-link.JPG)
 
-各セクションで、多くの異なるデモを試せます（Vision、OCR、Face、Emotioni Detectionn、VideoIndexer でのシーンとアクティビティの認識など）。
+各セクションで、多くの異なるデモを試せます（Vision、OCR、Face、Emotion Detection、Video Indexer でのシーンとアクティビティの認識など）。
 
 **Computer Vision** の **画像内のシーンおよびアクティビティ認識** の横にある **デモ** リンクを選択します。他のサービスを探索するためのデモリンクもあります。
 
@@ -63,7 +63,7 @@
 
 ![Cognitive Services Details](/docs-images/cognitive-details.JPG)
 
-作成されたら、通知領域（画面の右上）の **Go to resource** を選択します。
+作成されたら、通知領域（画面の右上）の **リソースに移動** を選択します。
 
 ![リソースに移動](/docs-images/go-to-resource.JPG)
 
