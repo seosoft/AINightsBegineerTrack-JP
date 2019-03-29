@@ -310,7 +310,7 @@ Azure 認証情報を使用してサインインして Azure Event Grid に接�
 [**新しいステップ**] を選択します。 **json** と入力して、候補の中から **JSON の解析** を選択します
 
 * **コンテンツ:** テキストボックスを選択すると右側に表示される '動的なコンテンツ' で、 **本文** を選択します
-* **スキーマ:** テキストボックスを選択し、[logic-app-schema file](sample-code/logic-app-demo/logic-app-schema.txt) の JSON スキーマを貼りつけます
+* **スキーマ:** テキストボックスを選択し、[logic-app-schema file](sample-code/logic-app-task/logic-app-schema.txt) の JSON スキーマを貼りつけます
 
 ![Parse JSON](docs-images/parse-json.JPG)
 
