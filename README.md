@@ -23,6 +23,11 @@
 
 > すべてのデモとコンテンツは Windows PC 上でテストしていますが、すべてのオプションは macOS と Linux マシンでも実行できるはずです。他のオペレーティングシステムについてフィードバックがある場合は、issue または pull request で情報を提供してください。
 
+**訳注**
+Azure サブスクリプションで、Event Grid リソースプロバイダーが登録されていない場合、以下のタスク 4で実行に失敗します。登録状態が不明な場合は、ここで確認してください。  
+[サブスクリプション] - [リソースプロバイダー] の **"Microsoft.EventGrid"** が "Registered" になっていれば登録済みです。
+![Azure Resource Provider](/docs-images/eventgrid_resorceprovider.jpg)
+
 ## タスク 1: Microsoft Azure Cognitive Services - Computer Vision
 
 このタスクでは、Webサイトのデモオプションを使用して Cognitive Services を試します。
