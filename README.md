@@ -121,7 +121,7 @@ KeyPhrases 関数など、REST API から他のオプションを試すことも
 
 Microsoft Azure Custom Vision サービスを使用すると、ごくわずかなコードで独自のパーソナライズ画像分類およびオブジェクト検出アルゴリズムを構築できます。この課題では、Standford University によって作成された [ImageNet open dataset]([http://vision.stanford.edu/aditya86/ImageNetDogs/](http://vision.stanford.edu/aditya86/ImageNetDogs/)) オープンデータセットから犬の画像を使用して犬種分類アルゴリズムを作成します。
 
-7つの犬種について、それぞれ 30枚の画像があります。（[ここ](https://github.com/amynic/AINights/blob/master/sample-images/dogs.zip) の.zipファイルで利用可能です）
+7つの犬種について、それぞれ 30枚の画像があります。（[ここ](sample-images/dogs.zip) の.zipファイルで利用可能です）
 
 * Beagle
 * Bernese Mountain Dog
