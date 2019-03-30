@@ -383,6 +383,13 @@ Logic Apps の画面に戻り、[Image URL] ボックスにカーソルを合わ
 
 すべてのセクションに緑色のチェックマークが付いているはずです。各セクションを選択して、レイヤー間の入力と出力を表示できます（これは、正しく実行されなかった場合にデバッグするのにも最適な方法です）。
 
+**訳注**
+2019年3月末時点では、上記の Logic App を実行すると、**Predict tags from image URL** でエラーが発生しています。  
+これは、Custom Vision の Prediction URL と Logic App の Predict tags コントロールとのバージョンに差異があるためです。  
+今後、Logic App 側で Custom Vision の新しいバージョン (v3.0) に対応することで上記の操作で犬種予測に成功するようになるはずです。  
+4月2日の時点では、上記の手順でアプリケーションを作成するという理解までとしてください。
+
+
 ![Logic app run successful](docs-images/explore-logic-app-run.JPG)
 
 最後に、'resultsainight' BLOBストレージアカウントに移動して、BLOB を選択し、'results' コンテナーを開き、そこに作成されたファイルを確認します。ファイルの内容は、犬の画像から得られる、犬の予測クラス、信頼度スコア
