@@ -218,6 +218,8 @@ Microsoft Azure Custom Vision サービスを使用すると、ごくわずか�
 
 これを選択すると、Postman からの API 呼び出しを作成するのに必要な情報が表示されます（'image' または 'image URL' の両方が使えます）。
 
+**訳注** Postman を起動して、POST する URL とヘッダーを入力します。**Body** にはネットで犬の画像を検索して、適当な画像の URL を指定します。
+
 ![Prediction in Postman](docs-images/postman-custom-vision.JPG)
 
 **おめでとう！** Azure Custom Vision サービスを使用して、特別な犬の分類モデルを作成しました。
