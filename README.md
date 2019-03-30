@@ -131,7 +131,7 @@ Microsoft Azure Custom Vision サービスを使用すると、ごくわずか�
 * Golden Retriever
 * Maltese
 
-この [.zip folder](sample-images/dogs.zip) にも一連のテスト画像（トレーニング用ではありません）があります。
+この [.zip folder](sample-images/dogs.zip) には、トレーニング用画像の他にテスト画像（トレーニング結果を試すための別の画像）もあります。
 
 まず Azure アカウントで Custom Vision インスタンスを作成します。
 
