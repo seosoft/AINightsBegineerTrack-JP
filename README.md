@@ -216,7 +216,7 @@ Microsoft Azure Custom Vision サービスを使用すると、ごくわずか�
 
 Performance では **[Publish]** を選択して犬種分類アプリケーションをクラウドに発行します。続いて **[Prediction URL]** を選択します。
 
-![Prediction URL Location](docs-images/prediction-url-location-v2.JPG)
+![Prediction URL Location](docs-images/prediction-url-location-v2.jpg)
 
 'Prediction URL' を選択すると、Postman からの API 呼び出しを作成するのに必要な情報が表示されます（'image' または 'image URL' の両方が使えます）。
 
