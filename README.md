@@ -384,9 +384,9 @@ Logic Apps の画面に戻り、[Image URL] ボックスにカーソルを合わ
 すべてのセクションに緑色のチェックマークが付いているはずです。各セクションを選択して、レイヤー間の入力と出力を表示できます（これは、正しく実行されなかった場合にデバッグするのにも最適な方法です）。
 
 **訳注**
-2019年3月末時点では、上記の Logic App を実行すると、**Predict tags from image URL** でエラーが発生しています。  
-これは、Custom Vision の Prediction URL と Logic App の Predict tags コントロールとのバージョンに差異があるためです。  
-今後、Logic App 側で Custom Vision の新しいバージョン (v3.0) に対応することで上記の操作で犬種予測に成功するようになるはずです。  
+2019年3月末時点では、上記の Logic App を実行すると**Predict tags from image URL** でエラーが発生しています。  
+これは Custom Vision の Prediction URL と Logic App の Predict tags コントロールとのバージョンに差異があるためです。  
+今後、Logic App 側が Custom Vision の新しいバージョン (v3.0) に対応することで上記の操作で犬種予測に成功するようになるはずです。  
 4月2日の時点では、上記の手順でアプリケーションを作成するという理解までとしてください。
 
 
