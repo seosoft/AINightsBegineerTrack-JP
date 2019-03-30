@@ -212,11 +212,13 @@ Microsoft Azure Custom Vision サービスを使用すると、ごくわずか�
 
 この画像は、予測ワークスペースから消えて、トレーニング画像ワークスペースに追加されます。新しい画像やタグをいくつか追加したら、モデルを再訓練して改善するかどうかを確認できます。
 
-アプリケーション内でこのモデルを使用するには、予測の詳細が必要です。トップバーから [Performance]　タブに移動して　[Prediction URL] を選択します。
+アプリケーション内でこのモデルを使用するには、予測の詳細が必要です。トップバーから [Performance]　タブに移動します。  
 
-![Prediction URL Location](docs-images/prediction-url-location.JPG)
+Performance では **[Publish]** を選択して犬種分類アプリケーションをクラウドに発行します。続いて **[Prediction URL]** を選択します。
 
-これを選択すると、Postman からの API 呼び出しを作成するのに必要な情報が表示されます（'image' または 'image URL' の両方が使えます）。
+![Prediction URL Location](docs-images/prediction-url-location-v2.JPG)
+
+'Prediction URL' を選択すると、Postman からの API 呼び出しを作成するのに必要な情報が表示されます（'image' または 'image URL' の両方が使えます）。
 
 **訳注** Postman を起動して、POST する URL とヘッダーを入力します。**Body** にはネットで犬の画像を検索して、適当な画像の URL を指定します。
 
