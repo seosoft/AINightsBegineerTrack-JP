@@ -227,7 +227,7 @@ Microsoft Azure Custom Vision サービスを使用すると、ごくわずか�
 
 ## タスク 4: カスタム AI をアプリケーションに組み込み - Azure Logic Apps
 
-このセクションでは、Custom Vision で犬種分類アプリケーションを使用するための Azure Logic App を構築します。
+このタスクでは、Custom Vision で犬種分類アプリケーションを使用するための Azure Logic App を構築します。
 
 最初に、2つの Azure ストレージアカウントを作成します。
 
@@ -282,21 +282,21 @@ Azure ポータルのホームページで、[**リソースの作成**] を選�
 
 以下のように設定の詳細を入力してロジックアプリを作成します:
 
-* **名前:** 犬の分類アプリに適した名前を入力します
-* **サブスクリプション:** サブスクリプションを選択します
-* **リソースグループ:** (ainights のような既存のものを使います) このワークショップで使っているリソースグループを選択します
-* **場所:** もっとも近いデータセンターを選択します
+* **名前:** 犬の分類アプリに適した任意の名前を入力
+* **サブスクリプション:** 任意のサブスクリプションを選択
+* **リソースグループ:** このワークショップで使っているリソースグループを選択
+* **場所:** 任意の場所を選択
 * **Log Analytics:** Off
 
-**作成** を選択します
+**作成** をクリックします。
 
 ![Logic App Option](docs-images/create-logic-app.JPG)
 
-作成したら、リソースに移動します。ここから、ロジックプロセスを作成することができます。左側のメニューから [**ロジックアプリデザイナー**] を選択し、次に [**Event Grid のリソースイベントが発生するとき**] を選択します。
+作成したら、リソースに移動します。ここから、ロジックプロセスを作成するします。左側のメニューから [**ロジックアプリデザイナー**] を選択し、次に [**Event Grid のリソースイベントが発生するとき**] を選択します。
 
 ![Logic App Trigger](docs-images/logic-app-trigger.JPG)
 
-Azure 認証情報を使用してサインインして Azure Event Grid に接続します。
+Azure 認証情報を使用してサインインし、Azure Event Grid に接続します。
 
 ![Event Grid Sign In](docs-images/event-grid-sign-in.JPG)
 
@@ -305,33 +305,33 @@ Azure 認証情報を使用してサインインして Azure Event Grid に接�
 以下のオプションを選択してください:
 * **Subscription:** サブスクリプション
 * **Resource Type:** Microsoft.Storage.StorageAccounts
-* **Resource Name:** 画像用ストレージアカウントを選択します (例: ainightsstor)
+* **Resource Name:** 画像を置く用のストレージアカウントを選択 (例: ainightsstor)
 * **Event Type 項目 - 1:** Microsoft.Storage.BlobCreated
 
 ![Event Grid Options](docs-images/event-grid-options.JPG)
 
 [**新しいステップ**] を選択します。 **json** と入力して、候補の中から **JSON の解析** を選択します
 
-* **コンテンツ:** テキストボックスを選択すると右側に表示される '動的なコンテンツ' で、 **本文** を選択します
+* **コンテンツ:** テキストボックスを選択すると右側に表示される [動的なコンテンツの追加] で、 **本文** を選択します
 * **スキーマ:** テキストボックスを選択し、[logic-app-schema file](sample-code/logic-app-task/logic-app-schema.txt) の JSON スキーマを貼りつけます
 
 ![Parse JSON](docs-images/parse-json.JPG)
 
 [**新しいステップ**] を選択します。'Custom Vision' と入力して、**Predict tags from image URL (プレビュー)** を選択します。
 
-接続名を入力し (例: customvisionconnection)、Custom Vision サービスの犬種分類プロジェクトからの予測キーを入力します。犬種分類器への Postman の REST リクエストを確認してそこからか、または Custom Vision サービスサイトの Performance タブから **Prediction Key** を取得します。
+Connection Name に任意の値を入力します (例: customvisionconnection)。Task 3 で作成した Custom Vision サービスの犬種分類プロジェクトの Prediction Key を入力します。**Prediction Key** は、犬種分類器への Postman の REST リクエストで入力した値、または Custom Vision のポータルの [Performance] タブから取得します。入力して、'作成' をクリックします。
 
 ![Custom Vision Connection](docs-images/custom-vision-connection.JPG)
 
-次のビューでは、Custom Vision 犬種分類プロジェクトの Project ID と Prediction Key を取得します。これらの値は、Custom Vision ポータルで右上にある設定アイコンを選択すると参照できます。
+次の画面では、Custom Vision 犬種分類プロジェクトの **Project ID** を入力します。Custom Vision ポータルで、右上にある設定アイコンを選択すると参照できます。
 
 ![Custom Vision Project ID](docs-images/find-project-id.JPG)
 
-Logic Apps の画面に戻り、[Image URL] ボックスにカーソルを合わせ、右側の [動的なコンテンツの] で 'URL' を検索して選択します。
+Logic Apps の画面に戻り、[Image URL] ボックスにカーソルを合わせ、右側の [動的なコンテンツの追加] で 'URL' を検索して選択します。
 
 ![get URL to predict](docs-images/get-url-to-predict.JPG)
 
-次のステップに進みます。
+[新しいステップ]をクリックします。
 
 **for each** と入力して、'For each' という灰色のコントロールを選択します。選択したら、 '以前の手順から出力を選択' を選択し、'動的なコンテンツ' から **Predictions** を選択します。
 
@@ -339,36 +339,37 @@ Logic Apps の画面に戻り、[Image URL] ボックスにカーソルを合わ
 
 **アクションの追加** を選択します。
 
-'制御' と入力して検索して、**制御** コントロールアイコンで **条件** を選択します。
+'制御' と入力して検索して、**制御** アイコンを選択して、その中の **条件** を選択します。
 
 ![If Statement](docs-images/if-statement.JPG)
 
-条件ボックスで、'値の選択' をクリックし、'動的なコンテンツ' で **Predictions Probability** を選択します。
+条件ボックスで、'値の選択' をクリックし、[動的なコンテンツの追加] で **Predictions Probability** を選択します。
 
 条件として '次の値以上' を選択し、'値の選択' に **0.7** と入力します。（以下の画像の通り）
 
 ![Condition value](docs-images/high-prediction.JPG)
 
-**true の場合** で、**アクションの追加** を選択します。
+**true の場合** 内の **アクションの追加** を選択します。
 
 'Azure Blob Storage' で検索して、**Azure Blob Storage** アイコンを選択し、**BLOB の作成** を選択します。
 
-接続名に **results** と入力し、'ストレージアカウント' で **resultsainights** を選択します。
+接続名に **results** と入力し、'ストレージアカウント' には、先ほど結果を置く用に作成したストレージアカウントを選択します。
 
 ![Connect to Result Blob Storage](docs-images/result-blob-connection.JPG)
 
 'フォルダーのパス' で右端にあるフォルダーアイコンを選択し、'results' を選択します。
 
-'BLOB 名' フィールドに '**result-**' と入力し、'動的なコンテンツ' で 'Id' を選択します。
+'BLOB 名' フィールドに '**result-**' と入力し、[動的なコンテンツの追加] から 'Id' を選択します。
 
-'BLOB コンテンツ' を選択し、'動的なコンテンツ' で 'Predict tags from image URL' の 'もっと見る' を選択します。そこで、**Prediction Tag** を選択し、テキストボックスに '**:**' と入力します。さらに、動的なコンテンツで **Predictions Probability** を選択します。
+'BLOB コンテンツ' を選択し、[動的なコンテンツの追加] から 'Predict tags from image URL' の 'もっと見る' を選択します。その中で **Prediction Tag** を選択しします。その後ろに '**:**' と入力します。続いて[動的なコンテンツの追加]で **Predictions Probability** を選択します。
 
 ![Azure Blob Storage results options](docs-images/blob-content-see-more.JPG)
 
 最後に、Logic Apps のアクションバーで **保存** を選択します。
 
 保存に成功したら、出力をテストしてみましょう。アクションバーで **実行** を選択します。
-**訳注** 実行すると '実行を表示するには、開始操作を実行してください' と表示されます。そのまま次の手順に進んでください。
+
+> **訳注** 実行すると '実行を表示するには、開始操作を実行してください' と表示されます。そのまま次の手順に進んでください。
 
 ![Run Logic App to test](docs-images/run-logic-app.JPG)
 
@@ -382,7 +383,7 @@ Logic Apps の画面に戻り、[Image URL] ボックスにカーソルを合わ
 
 すべてのセクションに緑色のチェックマークが付いているはずです。各セクションを選択して、レイヤー間の入力と出力を表示できます（これは、正しく実行されなかった場合にデバッグするのにも最適な方法です）。
 
-**訳注**
+> **訳注**
 2019年3月末時点では、上記の Logic App を実行すると**Predict tags from image URL** でエラーが発生しています。  
 これは Custom Vision の Prediction URL と Logic App の Predict tags コントロールとのバージョンに差異があるためです。  
 今後、Logic App 側が Custom Vision の新しいバージョン (v3.0) に対応することで上記の操作で犬種予測に成功するようになるはずです。  
