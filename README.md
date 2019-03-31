@@ -16,7 +16,7 @@
 
 ## マシンの前提条件
 
-* デモに必要な画像やコードサンプルを入手するために、'Clone or Download' (緑のボタン) > 'Download ZIP' を選択してダウンロードします。または、このリポジトリをローカルマシンに複製してください: `git clone https://github.com/seosoft/AINightsBegineerTrack-JP.git`  
+* ワークショップに必要な画像やコードサンプルを入手するために、'Clone or Download' (緑のボタン) > 'Download ZIP' を選択してダウンロードします。または、このリポジトリをローカルマシンに複製してください: `git clone https://github.com/seosoft/AINightsBegineerTrack-JP.git`  
 * [Microsoft Azure サブスクリプション](https://azure.microsoft.com/ja-jp/free/)
 * モダンブラウザー(Google Chrome, Microsoft Edge)
 * [Postman, API Development Environment - available on Windows, Linux and macOS](https://www.getpostman.com/downloads/)
@@ -119,9 +119,9 @@ KeyPhrases 関数など、REST API から他のオプションを試すことも
 
 ## タスク 3: Microsoft Azure Cognitive Services - Custom Vision
 
-Microsoft Azure Custom Vision サービスを使用すると、ごくわずかなコードで独自のパーソナライズ画像分類およびオブジェクト検出アルゴリズムを構築できます。この課題では、Standford University によって作成された [ImageNet open dataset]([http://vision.stanford.edu/aditya86/ImageNetDogs/](http://vision.stanford.edu/aditya86/ImageNetDogs/)) オープンデータセットから犬の画像を使用して犬種分類アルゴリズムを作成します。
+Microsoft Azure Custom Vision サービスを使用すると、ごくわずかなコードで独自の画像分類およびオブジェクト検出のアルゴリズムを構築できます。このタスクでは、スタンフォード大学が作成した [ImageNet open dataset]([http://vision.stanford.edu/aditya86/ImageNetDogs/](http://vision.stanford.edu/aditya86/ImageNetDogs/)) の中から、犬の画像を使って犬種分類アルゴリズムを作成します。
 
-7つの犬種について、それぞれ 30枚の画像があります。（[ここ](sample-images/dogs.zip) の.zipファイルで利用可能です）
+前述「マシンの前提条件」でダウンロードしたコンテンツの中で `sample-images/dogs.zip`フォルダー内に、7つの犬種それぞれ30枚づつの画像があります。
 
 * Beagle
 * Bernese Mountain Dog
@@ -131,45 +131,45 @@ Microsoft Azure Custom Vision サービスを使用すると、ごくわずか�
 * Golden Retriever
 * Maltese
 
-この [.zip folder](sample-images/dogs.zip) には、トレーニング用画像の他にテスト画像（トレーニング結果を試すための別の画像）もあります。
+また、`sample-images/dogs.zip` には、トレーニング用の画像の他にテスト用の画像（dog.zip内の `testset`）もあります。
 
 まず Azure アカウントで Custom Vision インスタンスを作成します。
 
-* [Azure ポータル](https://ms.portal.azure.com) のメインダッシュボードに接続します
-* 左上の 'リソースの作成' をクリックします
-* 'Custom Vision' を検索します
-* Custom Vision の詳細ペインで **作成** をクリックします
-* 詳細を入力してください
-    * サービスの名前を入力します
-    * サブスクリプションを選択します
-    * **[重要]** 場所では **米国中南部** (SOUTH CENTRAL US) を選択します
-    * 'Prediction pricing tier' および 'Training pricing tier' で 'S0' を選択します
-    * このプロジェクト用に作成済みの Resource Group を選択します（例：ainights）
-    * '作成' をクリックします
+* [Azure ポータル](https://ms.portal.azure.com) のメインダッシュボードを開く
+* 左上の 'リソースの作成' をクリック
+* 'Custom Vision' を検索
+* Custom Vision の詳細ペインで **作成** をクリック
+* 詳細の情報を入力
+    * 任意のサービスの名前を入力
+    * サブスクリプションを選択
+    * **[重要]** 場所は **米国中南部** (SOUTH CENTRAL US) を選択
+    * 'Prediction pricing tier' および 'Training pricing tier' で 'S0' を選択
+    * TASK2で作成した Resource Group を選択
+    * '作成' をクリック
 * ![Custom Vision Blade Details](/docs-images/custom-vision-azure.JPG)
 
-これで分類器を作成し、[https://www.customvision.ai](https://www.customvision.ai) に移動して、Azure 認証情報アカウントでサインインしてください。
+分類器を作成が完了したら、[https://www.customvision.ai](https://www.customvision.ai) に移動して、Azure 認証情報アカウントでサインインしてください。
 
-> 続行するには、利用規約ボックスに同意してください
+> 利用規約の表示が出た場合は、利用規約に同意の上、同意のチェックをオンにして進めてください。
 
-ロードされたら 'NEW PROJECT' を選択して詳細入力ウィンドウを開き。
+画面が表示された、 'NEW PROJECT' をクリックして詳細入力ウィンドウを開き、以下を参考に入力します。
 
-* Name: 適切な名前を入力
-* Description: 分類器の説明を入力（例は、下の画像に示します）
+* Name: 任意の名前を入力（例: dog classifier）
+* Description: 分類器の説明を入力（例: AIアプリ用）
 * Resource Group: Custom Vision を作成する Resource Group を選択します（例: ainights[SO]）
 * Project Types: Classification
 * Classification Types: Multiclass (Single tag per image)
 * Domains: General
 * ![Create Custom Vision Project](docs-images/create-project.JPG)
 
-'Create Project' を選択すると、下図のような空のワークスペースが表示されます。
+'Create Project' を選択すると、以下のように空のワークスペースが表示されます。
 ![Empty Custom Vision Project](docs-images/start-page.JPG)
 
 ここで、画像の追加とタグの割り当てを開始して画像分類器を作成します。
 
-画面左上の 'Add images' を選択して、[.zip folder](sample-images/dogs.zip) の最初のフォルダー - Beagle を開き、フォルダー内の 30枚の画像を選択します
+画面左上の 'Add images' を選択して、[サンプル画像のsample-images/dogs.zipフォルダー内](sample-images/dogs.zip) の最初のフォルダー - Beagle を開き、フォルダー内の 30枚の画像を選択します
 
-タグとして 'beagle' を指定して、'Upload 30 files' で画像をアップロードします 
+**My Tags** に 'beagle' と入力して、'Upload 30 files' で画像をアップロードします 
 
 ![Upload images of dogs](docs-images/add-class-images.JPG)
 
@@ -178,11 +178,11 @@ Microsoft Azure Custom Vision サービスを使用すると、ごくわずか�
 ![Successful upload](docs-images/upload-successful.JPG)
 
 同じ手順で、フォルダー内の他の 6つの犬種の画像をそれぞれタグ付けしてアップロードします:
-* 'Add images' をクリックします
-* 新しい30枚の犬の画像を選択します
-* クラスラベルを入力します (beagle, german-shepherd, maltese など)
-* 'Upload' を選択します
-* ワークスペースへのアップロードを確認します
+* 'Add images' をクリック
+* 新しい30枚の犬の画像を選択
+* **My Tags** に犬種を入力 (beagle, german-shepherd, maltese などフォルダーの名前を入力)
+* 'Upload' を選択
+* ワークスペースへのアップロードを確認
 
 すべてのカテゴリがアップロードされ、左側に犬種が表示され、犬の画像の種類に応じてフィルタリングできるようになります。
 
@@ -190,41 +190,40 @@ Microsoft Azure Custom Vision サービスを使用すると、ごくわずか�
 
 これで、アップロードした犬の画像データについてアルゴリズムを訓練する準備が整いました。右上隅にある緑色の 'Train' ボタンをクリックしてください。
 
-トレーニングプロセスが完了したら、[Performance]  タブに移動します。ここにはモデルのための機械学習の評価指標が表示されます。
+トレーニングプロセスが完了したら、[Performance] タブに移動します。ここで、訓練したモデルの機械学習の評価指標を見ることができます。
 
 ![Evaluation Metrics](docs-images/train-metrics.JPG)
 
-テストに必要なモデルが完成しました。右上にある（'Train' ボタンの横にあります） 'Quick Test' ボタンを選択してください。ウィンドウが開き、そこでローカル画像をブラウズしたり URLを入力することができます。
+これでテストに必要なモデルが完成しました。右上にある（'Train' ボタンの横にあります） 'Quick Test' ボタンを選択してください。ウィンドウが開き、ローカル画像をブラウズしたり URLを入力することができます。
 
-テストフォルダー内の画像（トレーニングされていない画像）を参照してアップロードします。画像が分析され、モデルがそれが何であると考えているのか（予測タグ）およびモデルの結果に対する信頼性（予測確率）の結果が返されます。 
+テストフォルダー内（dog.zip内の `testset`）の画像（トレーニングされていない画像）を参照してアップロードします。画像が分析され、モデルがそれが何であると考えているのか（Predictions 内の Tag列）およびモデルの結果に対する信頼性（Predictions 内の Probablity列）の結果が返されます。 
 
 ![Quick Test](docs-images/quick-test.JPG)
 
-> モデルがどのように機能するかを確認するには、テストフォルダー内の他の画像に対してこの手順を繰り返します。
+> モデルの性能を確認するには、テストフォルダー内の他の画像でこの手順を繰り返します。
 
-上部のツールバーの [Predictions] タブをクリックすると、送信したすべてのテスト画像が表示されます。このセクションは再トレーニングに使用できます。新しいデータを取得したら、これをモデルに追加してパフォーマンスを向上させることができます。画像は重要な順に並べられます - 正しく分類されていれば、モデルに追加された最も新しい情報が画像が先頭に表示されます。最後の画像はモデルによってすでに学習されている他の画像と非常に似ているかもしれませんが、これは正しい分類の重要性が低いものです。
+上部のツールバーの [Predictions] タブをクリックすると、テストした画像が表示されます。このセクションは再トレーニングに使用できます。新しいデータを取得したら、これをモデルに追加してパフォーマンスを向上させることができます。画像は重要な順に並べられます - 正しく分類されていれば、モデルに追加された最も新しい情報が画像が先頭に表示されます。最後の画像はモデルによってすでに学習されている他の画像と非常に似ているかもしれませんが、これは正しい分類の重要性が低いものです。
 
 ![Re-training](docs-images/retraining.JPG)
 
-これらの画像をモデルに追加するには、最初の画像を選択してモデルが提供した結果を確認してから、[My Tags] ボックスに正しいタグを入力して [Save and close] をクリックします。
+これらの画像をモデルに追加するには、画像を選択してモデルの結果を確認してから、[My Tags] ボックスに正しいタグを入力して [Save and close] をクリックします。
 
 ![Add Re-training Tag](docs-images/add-tag.JPG)
 
-この画像は、予測ワークスペースから消えて、トレーニング画像ワークスペースに追加されます。新しい画像やタグをいくつか追加したら、モデルを再訓練して改善するかどうかを確認できます。
+この画像は、[Predictions] ワークスペースから消え、[Training Images] ワークスペースに追加されます。新しい画像やタグをいくつか追加したら、モデルを再訓練して改善するかどうかを確認できます。
 
-アプリケーション内でこのモデルを使用するには、予測の詳細が必要です。トップバーから [Performance]　タブに移動します。  
+自身のアプリケーションでこのモデルを使用するには、このAPIにアクセスするための情報が必要です。トップバーの [Performance] タブに移動します。  
 
-Performance では **[Publish]** を選択して犬種分類アプリケーションをクラウドに発行します。続いて **[Prediction URL]** を選択します。
+[Performance] タブで **[Publish]** をクリックすると犬種分類アプリケーションをクラウドに発行されます。続いて 'Prediction URL' を選択すると、Postman からの API 呼び出しを作成するのに必要な情報が表示されます。
 
 ![Prediction URL Location](docs-images/prediction-url-location-v2.jpg)
 
-'Prediction URL' を選択すると、Postman からの API 呼び出しを作成するのに必要な情報が表示されます（'image' または 'image URL' の両方が使えます）。
+> #### 訳注 
+> - **If you have an image file:** は、ローカルの画像をアップロードするときに利用します。Postman から画像を送信する際、Bodyで **binary** を選択し、画像を直接添付します。
+> - **If you have an image URL:** は、URLでアクセスできる画像を参照する際に利用します。画像をインターネットでアクセスできる場所におき、BodyにJSONフォーマットでURLを指定します。
+  ![Prediction in Postman](docs-images/postman-custom-vision.JPG)
 
-**訳注** Postman を起動して、POST する URL とヘッダーを入力します。**Body** にはネットで犬の画像を検索して、適当な画像の URL を指定します。
-
-![Prediction in Postman](docs-images/postman-custom-vision.JPG)
-
-**おめでとう！** Azure Custom Vision サービスを使用して、特別な犬の分類モデルを作成しました。
+**おめでとうございます！** Azure Custom Vision サービスを使用して、自分だけの特別な犬の分類モデルを作成することができました。
 
 ## タスク 4: カスタム AI をアプリケーションに組み込み - Azure Logic Apps
 
