@@ -317,21 +317,20 @@ Azure 認証情報を使用してサインインし、Azure Event Grid に接続
 
 ![Parse JSON](docs-images/parse-json.JPG)
 
-[**新しいステップ**] を選択します。'Custom Vision' と入力して、**Predict tags from image URL (プレビュー)** を選択します。
+[**新しいステップ**] を選択します。'http' と入力して、**HTTP** を選択します。
 
-Connection Name に任意の値を入力します (例: customvisionconnection)。Task 3 で作成した Custom Vision サービスの犬種分類プロジェクトの Prediction Key を入力します。**Prediction Key** は、犬種分類器への Postman の REST リクエストで入力した値、または Custom Vision のポータルの [Performance] タブから取得します。入力して、'作成' をクリックします。
+![Select HTTP connector](docs-images/select-http-connector.jpg)
 
-![Custom Vision Connection](docs-images/custom-vision-connection.JPG)
+Postman で確認したときと同様に **方法**(POST)、**URI**、**ヘッダー**を入力します。**本文** のところに 前のステップで作成した **JSON の解析** 結果から **url** を選択して埋め込みます。([本文] ボックスにカーソルを合わせると右側に表示される [動的なコンテンツの追加] で 'URL' を検索して選択します。)
 
-次の画面では、Custom Vision 犬種分類プロジェクトの **Project ID** を入力します。Custom Vision ポータルで、右上にある設定アイコンを選択すると参照できます。
+![HTTP Options](docs-images/http-connector-options.jpg)
 
-![Custom Vision Project ID](docs-images/find-project-id.JPG)
+[**新しいステップ**]をクリックします。再び **JSON の解析** を選択します。
 
-Logic Apps の画面に戻り、[Image URL] ボックスにカーソルを合わせ、右側の [動的なコンテンツの追加] で 'URL' を検索して選択します。
+- コンテンツ: テキストボックスを選択すると右側に表示される [動的なコンテンツの追加] で、 **HTTP** の結果から **本文** を選択します
+- スキーマ: [サンプルのペイロードを使用して...] をクリックし、[customvision-schema file]() の JSON スキーマを貼りつけます
 
-![get URL to predict](docs-images/get-url-to-predict.JPG)
-
-[新しいステップ]をクリックします。
+![Parse JSON 2](docs-images/parse-json2.jpg)
 
 **for each** と入力して、'For each' という灰色のコントロールを選択します。選択したら、 '以前の手順から出力を選択' を選択し、'動的なコンテンツ' から **Predictions** を選択します。
 
@@ -343,11 +342,11 @@ Logic Apps の画面に戻り、[Image URL] ボックスにカーソルを合わ
 
 ![If Statement](docs-images/if-statement.JPG)
 
-条件ボックスで、'値の選択' をクリックし、[動的なコンテンツの追加] で **Predictions Probability** を選択します。
+条件ボックスで、'値の選択' をクリックし、[動的なコンテンツの追加] で **JSON の解析2** から **Probability** を選択します。
 
-条件として '次の値以上' を選択し、'値の選択' に **0.7** と入力します。（以下の画像の通り）
+条件として '次の値以上' を選択し、'値の選択' に **0.7** と入力します。
 
-![Condition value](docs-images/high-prediction.JPG)
+![For Each Options](docs-images/for-each-options.jpg)
 
 **true の場合** 内の **アクションの追加** を選択します。
 
@@ -359,11 +358,11 @@ Logic Apps の画面に戻り、[Image URL] ボックスにカーソルを合わ
 
 'フォルダーのパス' で右端にあるフォルダーアイコンを選択し、'results' を選択します。
 
-'BLOB 名' フィールドに '**result-**' と入力し、[動的なコンテンツの追加] から 'Id' を選択します。
+'BLOB 名' フィールドに '**result-**' と入力し、[動的なコンテンツの追加] で **JSON の解析2** から **Id** を選択します。
 
-'BLOB コンテンツ' を選択し、[動的なコンテンツの追加] から 'Predict tags from image URL' の 'もっと見る' を選択します。その中で **Prediction Tag** を選択しします。その後ろに '**:**' と入力します。続いて[動的なコンテンツの追加]で **Predictions Probability** を選択します。
+'BLOB コンテンツ' を選択し、[動的なコンテンツの追加] から で **JSON の解析2** の 'もっと見る' を選択します。その中で **tagName** を選択しします。その後ろに '**:**' と入力します。続いて[動的なコンテンツの追加]で **probability** を選択します。
 
-![Azure Blob Storage results options](docs-images/blob-content-see-more.JPG)
+![For Each Options](docs-images/for-each-options.JPG)
 
 最後に、Logic Apps のアクションバーで **保存** を選択します。
 
