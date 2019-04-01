@@ -26,7 +26,7 @@
 **訳注**
 Azure サブスクリプションで、Event Grid リソースプロバイダーが登録されていない場合、以下のタスク 4で実行に失敗します。登録状態が不明な場合は、ここで確認してください。  
 [サブスクリプション] - [リソースプロバイダー] の **"Microsoft.EventGrid"** が "Registered" になっていれば登録済みです。
-![Azure Resource Provider](/docs-images/eventgrid_resorceprovider.jpg)
+![Azure Resource Provider](docs-images/eventgrid_resorceprovider.jpg)
 
 ## タスク 1: Microsoft Azure Cognitive Services - Computer Vision
 
@@ -34,17 +34,17 @@ Azure サブスクリプションで、Event Grid リソースプロバイダー
 
 サイトを開きます: [https://azure.microsoft.com/ja-jp/services/cognitive-services/directory/vision/](https://azure.microsoft.com/ja-jp/services/cognitive-services/directory/vision/)
 
-![Computer Vision website Link highlighted](/docs-images/computer-vision-link.JPG)
+![Computer Vision website Link highlighted](docs-images/computer-vision-link.JPG)
 
 各セクションで、多くの異なるデモを試せます（Vision、OCR、Face、Emotion Detection、Video Indexer でのシーンとアクティビティの認識など）。
 
 **Computer Vision** の **画像内のシーンおよびアクティビティ認識** の横にある **デモ** リンクを選択します。他のサービスを探索するためのデモリンクもあります。
 
-![Computer Vision Example](/docs-images/computer-vision-demo.JPG)
+![Computer Vision Example](docs-images/computer-vision-demo.JPG)
 
 次に、**参照** ボタンを選択して、`sample-images/computer-vision-web-browser/` から cat.jpeg または city.jpeg の画像をアップロードしてみましょう。画像の分析結果を見ることができます。
 
-![Computer Vision Cat Example](/docs-images/cat-sample.JPG)
+![Computer Vision Cat Example](docs-images/cat-sample.JPG)
 
 ## タスク 2: Microsoft Azure Cognitive Services - REST 経由で Text Analytics を利用
 
@@ -54,7 +54,7 @@ Azure サブスクリプションで、Event Grid リソースプロバイダー
 
 ポータルで **リソースの作成** を選択します。**Cognitive Services** を検索して選択します。そのあと、ブレードで **作成** を選択します。
 
-![Create Cognitive Services Account](/docs-images/cognitive-azure.JPG)
+![Create Cognitive Services Account](docs-images/cognitive-azure.JPG)
 
 以下を参考に詳細を入力してアカウントを作成します:
 
@@ -66,18 +66,18 @@ Azure サブスクリプションで、Event Grid リソースプロバイダー
 * **利用規約ボックスに同意した上で、チェックをオン**
 * **'作成' を選択**
 
-![Cognitive Services Details](/docs-images/cognitive-details.JPG)
+![Cognitive Services Details](docs-images/cognitive-details.JPG)
 
 作成されたら、通知領域（画面の右上）の **リソースに移動** を選択します。
 
-![リソースに移動](/docs-images/go-to-resource.JPG)
+![リソースに移動](docs-images/go-to-resource.JPG)
 
 Cognitive Services ページで **Keys** を選択して、**KEY 1** をコピーし、メモ帳などに貼っておきます。
 
-![Copy Key](/docs-images/keys.JPG)
+![Copy Key](docs-images/keys.JPG)
 
 左上の *Overview* を選択して、**Endpoint** の値をコピーし、メモ帳などに貼っておきます。
-![Copy Endpoint](/docs-images/endpoint.JPG)
+![Copy Endpoint](docs-images/endpoint.JPG)
 
 Postman をローカルマシンにダウンロードして開きます。
 
@@ -85,15 +85,15 @@ Postman をローカルマシンにダウンロードして開きます。
 
 **Request** を選択します。
 
-![Create A Request](/docs-images/create-request.JPG)
+![Create A Request](docs-images/create-request.JPG)
 
 以下のようにリクエストの詳細を入力し、**新しいコレクションを作成** するオプションを選択して "Text Analytics Samples" という名前を付けます。
 
-![Enter Request Details](/docs-images/save-request.JPG)
+![Enter Request Details](docs-images/save-request.JPG)
 
 新しく作成したコレクションを選択して "保存" を選択します。
 
-![Save Request](/docs-images/save.JPG)
+![Save Request](docs-images/save.JPG)
 
 以下の手順で Text Analytics API を呼び出すリクエストを作成します:
 
@@ -102,16 +102,16 @@ Postman をローカルマシンにダウンロードして開きます。
 * URL テキストボックスの下の **Headers** を選択
 * **Key** に `Ocp-Apim-Subscription-Key` を入力、**Value** に KEY1 の値を入力
 * **Key** に `Content-Type` を入力、**Value** に `application/json` と入力
-* ![Headers and URL](/docs-images/url-and-headers.JPG)
+* ![Headers and URL](docs-images/url-and-headers.JPG)
 * URL テキストボックスの下の **Body** を選択
 * ラジオボタンの `raw` を選択
 * `sample-code/cognitive-services-api-task/sentiment-analysis-text.json` の JSON のサンプルをテキストボックスに貼り付けます
 * **Send** ボタンを選択して、レスポンスを確認しましょう
-* ![Body and Submit REST Request](/docs-images/rest-body.JPG)
+* ![Body and Submit REST Request](docs-images/rest-body.JPG)
 
 KeyPhrases 関数など、REST API から他のオプションを試すこともできます。 URLの末尾を "sentiment" から "keyPhrases" に変更し、"Send" を選択してサンプルテキストのキーフレーズを表示します。
 
-* ![Key Phrases REST Request](/docs-images/keyphrases.JPG)
+* ![Key Phrases REST Request](docs-images/keyphrases.JPG)
 
 > [こちら](https://docs.microsoft.com/ja-jp/azure/cognitive-services/text-analytics/language-support)で Text Analytics API の言語サポートをチェックしてください。あなたの言語がサポートされている場合は、テキストを翻訳して上記の API の機能を表示するために JSON ファイルを編集してください。フランス語のJSONファイルの例が ```sample-code/text-analytics-demo/sentiment-analysis-text-fr.json``` にあります。このファイルを適切に編集してください。
 
@@ -146,13 +146,13 @@ Microsoft Azure Custom Vision サービスを使用すると、ごくわずか�
     * 'Prediction pricing tier' および 'Training pricing tier' で 'S0' を選択
     * TASK2で作成した Resource Group を選択
     * '作成' をクリック
-* ![Custom Vision Blade Details](/docs-images/custom-vision-azure.JPG)
+* ![Custom Vision Blade Details](docs-images/custom-vision-azure.JPG)
 
 分類器を作成が完了したら、[https://www.customvision.ai](https://www.customvision.ai) に移動して、Azure 認証情報アカウントでサインインしてください。
 
 > 利用規約の表示が出た場合は、利用規約に同意の上、同意のチェックをオンにして進めてください。
 
-画面が表示された、 'NEW PROJECT' をクリックして詳細入力ウィンドウを開き、以下を参考に入力します。
+画面が表示されたら、'NEW PROJECT' をクリックして詳細入力ウィンドウを開き、以下を参考に入力します。
 
 * Name: 任意の名前を入力（例: dog classifier）
 * Description: 分類器の説明を入力（例: AIアプリ用）
