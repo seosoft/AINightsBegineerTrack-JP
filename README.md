@@ -328,7 +328,7 @@ Postman で確認したときと同様に **方法**(POST)、**URI**、**ヘッ�
 [**新しいステップ**]をクリックします。再び **JSON の解析** を選択します。
 
 - コンテンツ: テキストボックスを選択すると右側に表示される [動的なコンテンツの追加] で、 **HTTP** の結果から **本文** を選択します
-- スキーマ: テキストボックスを選択し、[customvision-schema file]() の JSON スキーマを貼りつけます
+- スキーマ: [サンプルのペイロードを使用して...] をクリックし、[customvision-schema file]() の JSON スキーマを貼りつけます
 
 ![Parse JSON 2](docs-images/parse-json2.jpg)
 
@@ -346,7 +346,7 @@ Postman で確認したときと同様に **方法**(POST)、**URI**、**ヘッ�
 
 条件として '次の値以上' を選択し、'値の選択' に **0.7** と入力します。
 
-![For Each Options](docs-images/for-each-options.JPG)
+![For Each Options](docs-images/for-each-options.jpg)
 
 **true の場合** 内の **アクションの追加** を選択します。
 
