@@ -6,7 +6,7 @@
 
 **タイトル:** 見る、聞く、話す、または理解することができるアプリケーションを、Microsoft Cognitive Services で作成する
 
-**概要:** このワークショップでは、まず、[Microsoft Azure Cognitive Services](https://azure.microsoft.com/ja-jp/services/cognitive-services/) を紹介します。Cognitive Services は、スクラッチでコーディングすることなく、インテリジェンスと機械学習をアプリケーションに組み込むために使用できるサービス群です。例えば、[Computer Vision](https://azure.microsoft.com/ja-jp/services/cognitive-services/directory/vision/) や [Text Analytics](https://azure.microsoft.com/ja-jp/services/cognitive-services/directory/lang/) は、事前に学習済みの AI の API で、REST プロトコルによってアクセスできます。
+**概要:** このワークショップでは、まず、[Microsoft Azure Cognitive Services](https://azure.microsoft.com/ja-jp/services/cognitive-services/) を紹介します。Cognitive Servicesは、スクラッチでコーディングすることなく、インテリジェンスと機械学習をアプリケーションに組み込むために使用できるサービス群です。例えば、[Computer Vision](https://azure.microsoft.com/ja-jp/services/cognitive-services/directory/vision/) や [Text Analytics](https://azure.microsoft.com/ja-jp/services/cognitive-services/directory/lang/) は、事前に学習済みの AI の API で、REST プロトコルによってアクセスできます。
 
 次に、Cognitive Services をオフラインおよびエッジデバイスで実行できるようにするために、Cognitive Services を[コンテナーでホストする](hhttps://docs.microsoft.com/ja-jp/azure/cognitive-services/cognitive-services-container-support)方法を説明します。
 
@@ -16,21 +16,21 @@
 
 ## マシンの前提条件
 
-- ワークショップに必要な画像やコードサンプルを入手するために、'Clone or Download' (緑のボタン) > 'Download ZIP' を選択してダウンロードします。または、このリポジトリをローカルマシンに複製してください: `git clone https://github.com/seosoft/AINightsBegineerTrack-JP.git`
-- [Microsoft Azure サブスクリプション](https://azure.microsoft.com/ja-jp/free/)
-- モダンブラウザー(Google Chrome, Microsoft Edge)
-- [Postman, API Development Environment - available on Windows, Linux and macOS](https://www.getpostman.com/downloads/)
+* ワークショップに必要な画像やコードサンプルを入手するために、'Clone or Download' (緑のボタン) > 'Download ZIP' を選択してダウンロードします。または、このリポジトリをローカルマシンに複製してください: `git clone https://github.com/seosoft/AINightsBegineerTrack-JP.git`  
+* [Microsoft Azure サブスクリプション](https://azure.microsoft.com/ja-jp/free/)
+* モダンブラウザー(Google Chrome, Microsoft Edge)
+* [Postman, API Development Environment - available on Windows, Linux and macOS](https://www.getpostman.com/downloads/)
 
 > すべてのデモとコンテンツは Windows PC 上でテストしていますが、すべてのオプションは macOS と Linux マシンでも実行できるはずです。他のオペレーティングシステムについてフィードバックがある場合は、issue または pull request で情報を提供してください。
 
 **訳注**
-Azure サブスクリプションで、Event Grid リソースプロバイダーが登録されていない場合、以下のタスク 4 で実行に失敗します。登録状態が不明な場合は、ここで確認してください。  
+Azure サブスクリプションで、Event Grid リソースプロバイダーが登録されていない場合、以下のタスク 4で実行に失敗します。登録状態が不明な場合は、ここで確認してください。  
 [サブスクリプション] - [リソースプロバイダー] の **"Microsoft.EventGrid"** が "Registered" になっていれば登録済みです。
 ![Azure Resource Provider](docs-images/eventgrid_resorceprovider.jpg)
 
 ## タスク 1: Microsoft Azure Cognitive Services - Computer Vision
 
-このタスクでは、Web サイトのデモオプションを使用して Cognitive Services を試します。
+このタスクでは、Webサイトのデモオプションを使用して Cognitive Services を試します。
 
 サイトを開きます: [https://azure.microsoft.com/ja-jp/services/cognitive-services/directory/vision/](https://azure.microsoft.com/ja-jp/services/cognitive-services/directory/vision/)
 
@@ -58,13 +58,13 @@ Azure サブスクリプションで、Event Grid リソースプロバイダー
 
 以下を参考に詳細を入力してアカウントを作成します:
 
-- **Name:** サービスに適した任意の名前を入力 (例: `ainightscognitive`)
-- **サブスクリプション:** サブスクリプションを選択
-- **場所:** 任意の場所を選択（日本リージョンの利用も可能です）
-- **Pricing Tier:** S0
-- **Resource Group:** '新規選択' を選択して、任意の名前を入力 (例: `ainights`)
-- **利用規約ボックスに同意した上で、チェックをオン**
-- **'作成' を選択**
+* **Name:** サービスに適した任意の名前を入力 (例: `ainightscognitive`)
+* **サブスクリプション:** サブスクリプションを選択
+* **場所:** 任意の場所を選択（日本リージョンの利用も可能です）
+* **Pricing Tier:** S0
+* **Resource Group:** '新規選択' を選択して、任意の名前を入力 (例: `ainights`)
+* **利用規約ボックスに同意した上で、チェックをオン**
+* **'作成' を選択**
 
 ![Cognitive Services Details](docs-images/cognitive-details.JPG)
 
@@ -76,7 +76,7 @@ Cognitive Services ページで **Keys** を選択して、**KEY 1** をコピ�
 
 ![Copy Key](docs-images/keys.JPG)
 
-左上の _Overview_ を選択して、**Endpoint** の値をコピーし、メモ帳などに貼っておきます。
+左上の *Overview* を選択して、**Endpoint** の値をコピーし、メモ帳などに貼っておきます。
 ![Copy Endpoint](docs-images/endpoint.JPG)
 
 Postman をローカルマシンにダウンロードして開きます。
@@ -97,79 +97,79 @@ Postman をローカルマシンにダウンロードして開きます。
 
 以下の手順で Text Analytics API を呼び出すリクエストを作成します:
 
-- 左上の GET リクエストから **POST** リクエストに変更
-- Cognitive Services の Endpoint URL を入力して、末尾に次の値を追加: `text/analytics/v2.0/sentiment`
-- URL テキストボックスの下の **Headers** を選択
-- **Key** に `Ocp-Apim-Subscription-Key` を入力、**Value** に KEY1 の値を入力
-- **Key** に `Content-Type` を入力、**Value** に `application/json` と入力
-- ![Headers and URL](docs-images/url-and-headers.JPG)
-- URL テキストボックスの下の **Body** を選択
-- ラジオボタンの `raw` を選択
-- `sample-code/cognitive-services-api-task/sentiment-analysis-text.json` の JSON のサンプルをテキストボックスに貼り付けます
-- **Send** ボタンを選択して、レスポンスを確認しましょう
-- ![Body and Submit REST Request](docs-images/rest-body.JPG)
+* 左上の GET リクエストから **POST** リクエストに変更
+* Cognitive Services の Endpoint URL を入力して、末尾に次の値を追加: `text/analytics/v2.0/sentiment`
+* URL テキストボックスの下の **Headers** を選択
+* **Key** に `Ocp-Apim-Subscription-Key` を入力、**Value** に KEY1 の値を入力
+* **Key** に `Content-Type` を入力、**Value** に `application/json` と入力
+* ![Headers and URL](docs-images/url-and-headers.JPG)
+* URL テキストボックスの下の **Body** を選択
+* ラジオボタンの `raw` を選択
+* `sample-code/cognitive-services-api-task/sentiment-analysis-text.json` の JSON のサンプルをテキストボックスに貼り付けます
+* **Send** ボタンを選択して、レスポンスを確認しましょう
+* ![Body and Submit REST Request](docs-images/rest-body.JPG)
 
-KeyPhrases 関数など、REST API から他のオプションを試すこともできます。 URL の末尾を "sentiment" から "keyPhrases" に変更し、"Send" を選択してサンプルテキストのキーフレーズを表示します。
+KeyPhrases 関数など、REST API から他のオプションを試すこともできます。 URLの末尾を "sentiment" から "keyPhrases" に変更し、"Send" を選択してサンプルテキストのキーフレーズを表示します。
 
-- ![Key Phrases REST Request](docs-images/keyphrases.JPG)
+* ![Key Phrases REST Request](docs-images/keyphrases.JPG)
 
-> [こちら](https://docs.microsoft.com/ja-jp/azure/cognitive-services/text-analytics/language-support)で Text Analytics API の言語サポートをチェックしてください。あなたの言語がサポートされている場合は、テキストを翻訳して上記の API の機能を表示するために JSON ファイルを編集してください。フランス語の JSON ファイルの例が `sample-code/text-analytics-demo/sentiment-analysis-text-fr.json` にあります。このファイルを適切に編集してください。
+> [こちら](https://docs.microsoft.com/ja-jp/azure/cognitive-services/text-analytics/language-support)で Text Analytics API の言語サポートをチェックしてください。あなたの言語がサポートされている場合は、テキストを翻訳して上記の API の機能を表示するために JSON ファイルを編集してください。フランス語のJSONファイルの例が ```sample-code/text-analytics-demo/sentiment-analysis-text-fr.json``` にあります。このファイルを適切に編集してください。
 
 > Postman の実行に問題がある場合は、[センチメント分析](https://northeurope.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) および [キーフレーズ抽出](https://northeurope.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) の API ドキュメントで REST API を実行できます。サイトで内で使用するデータセンターを選択し、Postman で使用した JSON のサンプルと Key を入力して実行してみましょう。
 
 ## タスク 3: Microsoft Azure Cognitive Services - Custom Vision
 
-Microsoft Azure Custom Vision サービスを使用すると、ごくわずかなコードで独自の画像分類およびオブジェクト検出のアルゴリズムを構築できます。このタスクでは、スタンフォード大学が作成した [ImageNet open dataset](<[http://vision.stanford.edu/aditya86/ImageNetDogs/](http://vision.stanford.edu/aditya86/ImageNetDogs/)>) の中から、犬の画像を使って犬種分類アルゴリズムを作成します。
+Microsoft Azure Custom Vision サービスを使用すると、ごくわずかなコードで独自の画像分類およびオブジェクト検出のアルゴリズムを構築できます。このタスクでは、スタンフォード大学が作成した [ImageNet open dataset]([http://vision.stanford.edu/aditya86/ImageNetDogs/](http://vision.stanford.edu/aditya86/ImageNetDogs/)) の中から、犬の画像を使って犬種分類アルゴリズムを作成します。
 
-前述「マシンの前提条件」でダウンロードしたコンテンツの中で `sample-images/dogs.zip`フォルダー内に、7 つの犬種それぞれ 30 枚づつの画像があります。
+前述「マシンの前提条件」でダウンロードしたコンテンツの中で `sample-images/dogs.zip`フォルダー内に、7つの犬種それぞれ30枚づつの画像があります。
 
-- Beagle
-- Bernese Mountain Dog
-- Chihuahua
-- Eskimo Dog (Husky)
-- German Shepherd
-- Golden Retriever
-- Maltese
+* Beagle
+* Bernese Mountain Dog
+* Chihuahua
+* Eskimo Dog (Husky)
+* German Shepherd
+* Golden Retriever
+* Maltese
 
-また、`sample-images/dogs.zip` には、トレーニング用の画像の他にテスト用の画像（dog.zip 内の `testset`）もあります。
+また、`sample-images/dogs.zip` には、トレーニング用の画像の他にテスト用の画像（dog.zip内の `testset`）もあります。
 
 まず Azure アカウントで Custom Vision インスタンスを作成します。
 
-- [Azure ポータル](https://ms.portal.azure.com) のメインダッシュボードを開く
-- 左上の 'リソースの作成' をクリック
-- 'Custom Vision' を検索
-- Custom Vision の詳細ペインで **作成** をクリック
-- 詳細の情報を入力
-  - 任意のサービスの名前を入力
-  - サブスクリプションを選択
-  - **[重要]** 場所は **米国中南部** (SOUTH CENTRAL US) を選択
-  - 'Prediction pricing tier' および 'Training pricing tier' で 'S0' を選択
-  - TASK2 で作成した Resource Group を選択
-  - '作成' をクリック
-- ![Custom Vision Blade Details](docs-images/custom-vision-azure.JPG)
+* [Azure ポータル](https://ms.portal.azure.com) のメインダッシュボードを開く
+* 左上の 'リソースの作成' をクリック
+* 'Custom Vision' を検索
+* Custom Vision の詳細ペインで **作成** をクリック
+* 詳細の情報を入力
+    * 任意のサービスの名前を入力
+    * サブスクリプションを選択
+    * **[重要]** 場所は **米国中南部** (SOUTH CENTRAL US) を選択
+    * 'Prediction pricing tier' および 'Training pricing tier' で 'S0' を選択
+    * TASK2で作成した Resource Group を選択
+    * '作成' をクリック
+* ![Custom Vision Blade Details](docs-images/custom-vision-azure.JPG)
 
 分類器を作成が完了したら、[https://www.customvision.ai](https://www.customvision.ai) に移動して、Azure 認証情報アカウントでサインインしてください。
 
 > 利用規約の表示が出た場合は、利用規約に同意の上、同意のチェックをオンにして進めてください。
 
-画面が表示されたら、 'NEW PROJECT' をクリックして詳細入力ウィンドウを開き、以下を参考に入力します。
+画面が表示されたら、'NEW PROJECT' をクリックして詳細入力ウィンドウを開き、以下を参考に入力します。
 
-- Name: 任意の名前を入力（例: dog classifier）
-- Description: 分類器の説明を入力（例: AI アプリ用）
-- Resource Group: Custom Vision を作成する Resource Group を選択します（例: ainights[SO]）
-- Project Types: Classification
-- Classification Types: Multiclass (Single tag per image)
-- Domains: General
-- ![Create Custom Vision Project](docs-images/create-project.JPG)
+* Name: 任意の名前を入力（例: dog classifier）
+* Description: 分類器の説明を入力（例: AIアプリ用）
+* Resource Group: Custom Vision を作成する Resource Group を選択します（例: ainights[SO]）
+* Project Types: Classification
+* Classification Types: Multiclass (Single tag per image)
+* Domains: General
+* ![Create Custom Vision Project](docs-images/create-project.JPG)
 
 'Create Project' を選択すると、以下のように空のワークスペースが表示されます。
 ![Empty Custom Vision Project](docs-images/start-page.JPG)
 
 ここで、画像の追加とタグの割り当てを開始して画像分類器を作成します。
 
-画面左上の 'Add images' を選択して、[サンプル画像の sample-images/dogs.zip フォルダー内](sample-images/dogs.zip) の最初のフォルダー - Beagle を開き、フォルダー内の 30 枚の画像を選択します
+画面左上の 'Add images' を選択して、[サンプル画像のsample-images/dogs.zipフォルダー内](sample-images/dogs.zip) の最初のフォルダー - Beagle を開き、フォルダー内の 30枚の画像を選択します
 
-**My Tags** に 'beagle' と入力して、'Upload 30 files' で画像をアップロードします
+**My Tags** に 'beagle' と入力して、'Upload 30 files' で画像をアップロードします 
 
 ![Upload images of dogs](docs-images/add-class-images.JPG)
 
@@ -177,13 +177,12 @@ Microsoft Azure Custom Vision サービスを使用すると、ごくわずか�
 
 ![Successful upload](docs-images/upload-successful.JPG)
 
-同じ手順で、フォルダー内の他の 6 つの犬種の画像をそれぞれタグ付けしてアップロードします:
-
-- 'Add images' をクリック
-- 新しい 30 枚の犬の画像を選択
-- **My Tags** に犬種を入力 (beagle, german-shepherd, maltese などフォルダーの名前を入力)
-- 'Upload' を選択
-- ワークスペースへのアップロードを確認
+同じ手順で、フォルダー内の他の 6つの犬種の画像をそれぞれタグ付けしてアップロードします:
+* 'Add images' をクリック
+* 新しい30枚の犬の画像を選択
+* **My Tags** に犬種を入力 (beagle, german-shepherd, maltese などフォルダーの名前を入力)
+* 'Upload' を選択
+* ワークスペースへのアップロードを確認
 
 すべてのカテゴリがアップロードされ、左側に犬種が表示され、犬の画像の種類に応じてフィルタリングできるようになります。
 
@@ -195,9 +194,9 @@ Microsoft Azure Custom Vision サービスを使用すると、ごくわずか�
 
 ![Evaluation Metrics](docs-images/train-metrics.JPG)
 
-これでテストに必要なモデルが完成しました。右上にある（'Train' ボタンの横にあります） 'Quick Test' ボタンを選択してください。ウィンドウが開き、ローカル画像をブラウズしたり URL を入力することができます。
+これでテストに必要なモデルが完成しました。右上にある（'Train' ボタンの横にあります） 'Quick Test' ボタンを選択してください。ウィンドウが開き、ローカル画像をブラウズしたり URLを入力することができます。
 
-テストフォルダー内（dog.zip 内の `testset`）の画像（トレーニングされていない画像）を参照してアップロードします。画像が分析され、モデルがそれが何であると考えているのか（Predictions 内の Tag 列）およびモデルの結果に対する信頼性（Predictions 内の Probablity 列）の結果が返されます。
+テストフォルダー内（dog.zip内の `testset`）の画像（トレーニングされていない画像）を参照してアップロードします。画像が分析され、モデルがそれが何であると考えているのか（Predictions 内の Tag列）およびモデルの結果に対する信頼性（Predictions 内の Probablity列）の結果が返されます。 
 
 ![Quick Test](docs-images/quick-test.JPG)
 
@@ -213,17 +212,16 @@ Microsoft Azure Custom Vision サービスを使用すると、ごくわずか�
 
 この画像は、[Predictions] ワークスペースから消え、[Training Images] ワークスペースに追加されます。新しい画像やタグをいくつか追加したら、モデルを再訓練して改善するかどうかを確認できます。
 
-自身のアプリケーションでこのモデルを使用するには、この API にアクセスするための情報が必要です。トップバーの [Performance] タブに移動します。
+自身のアプリケーションでこのモデルを使用するには、このAPIにアクセスするための情報が必要です。トップバーの [Performance] タブに移動します。  
 
 [Performance] タブで **[Publish]** をクリックすると犬種分類アプリケーションをクラウドに発行されます。続いて 'Prediction URL' を選択すると、Postman からの API 呼び出しを作成するのに必要な情報が表示されます。
 
 ![Prediction URL Location](docs-images/prediction-url-location-v2.jpg)
 
-> #### 訳注
->
-> - **If you have an image file:** は、ローカルの画像をアップロードするときに利用します。Postman から画像を送信する際、Body で **binary** を選択し、画像を直接添付します。
-> - **If you have an image URL:** は、URL でアクセスできる画像を参照する際に利用します。画像をインターネットでアクセスできる場所におき、Body に JSON フォーマットで URL を指定します。
->   ![Prediction in Postman](docs-images/postman-custom-vision.JPG)
+> #### 訳注 
+> - **If you have an image file:** は、ローカルの画像をアップロードするときに利用します。Postman から画像を送信する際、Bodyで **binary** を選択し、画像を直接添付します。
+> - **If you have an image URL:** は、URLでアクセスできる画像を参照する際に利用します。画像をインターネットでアクセスできる場所におき、BodyにJSONフォーマットでURLを指定します。
+  ![Prediction in Postman](docs-images/postman-custom-vision.JPG)
 
 **おめでとうございます！** Azure Custom Vision サービスを使用して、自分だけの特別な犬の分類モデルを作成することができました。
 
@@ -231,35 +229,34 @@ Microsoft Azure Custom Vision サービスを使用すると、ごくわずか�
 
 このタスクでは、Custom Vision で犬種分類アプリケーションを使用するための Azure Logic App を構築します。
 
-最初に、2 つの Azure ストレージアカウントを作成します。
+最初に、2つの Azure ストレージアカウントを作成します。
 
 Azure ポータルに移動し、左上にある [リソースの作成] をクリックします。Storage セクションを選択し、最初のオプションの 'Storage Account' を選択します。
 
 ![Azure Storage Account](docs-images/storage-account.JPG)
 
-2 つのストレージアカウントを作成します:
+2つのストレージアカウントを作成します:
+* 一つは画像ファイルを置くのに使います (名前は ainightstor とします)
+* もう一つは結果を置くのに使います (名前は resultainights とします)
 
-- 一つは画像ファイルを置くのに使います (名前は ainightstor とします)
-- もう一つは結果を置くのに使います (名前は resultainights とします)
-
-> 以下の手順を 2 回実行して、合計 **2 個** のストレージアカウントを作成します
+> 以下の手順を 2回実行して、合計 **2個** のストレージアカウントを作成します
 
 ストレージアカウント作成ページで、設定するためのオプションを入力します:
 
-- **サブスクリプション:** サブスクリプションを選択します
-- **リソースグループ:** このワークショップで使っているワークグループを選択します（例: ainights）
-- **ストレージアカウント名:** (ユニークな名前である必要があります) 全て小文字でストレージアカウント名を入力します。 _ainightsstor(あなたの名前) や resultsainights(あなたの名前) - ユニークな名前にするために、"かっこをつけずに" 末尾に自分の名前を付けるなどをしてください_
-- **場所:** もっとも近いデータセンターを選択します
-- **パフォーマンス:** Standard
-- **アカウントの種類:** Blob Storage
-- **レプリケーション:** ローカル冗長ストレージ (LRS)
-- **アクセス層:** ホット
+* **サブスクリプション:** サブスクリプションを選択します
+* **リソースグループ:** このワークショップで使っているワークグループを選択します（例: ainights）
+* **ストレージアカウント名:** (ユニークな名前である必要があります) 全て小文字でストレージアカウント名を入力します。 *ainightsstor(あなたの名前) や resultsainights(あなたの名前) - ユニークな名前にするために、"かっこをつけずに" 末尾に自分の名前を付けるなどをしてください*
+* **場所:** もっとも近いデータセンターを選択します
+* **パフォーマンス:** Standard
+* **アカウントの種類:** Blob Storage
+* **レプリケーション:** ローカル冗長ストレージ (LRS)
+* **アクセス層:** ホット
 
 **機能および作成** を選択し、検証されたことを確認してから **作成** を選択します。
 
 ![Create Azure Storage Account](docs-images/create-storage-account.JPG)
 
-展開が完了したら、リソースにアクセスしてアカウント設定を確認します。空の BLOB ストレージアカウントを確認するには、[**BLOB**] を選択します。
+展開が完了したら、リソースにアクセスしてアカウント設定を確認します。空のBLOBストレージアカウントを確認するには、[**BLOB**] を選択します。
 
 ![Select Blob Storage Account](docs-images/select-blobs.JPG)
 
@@ -285,11 +282,11 @@ Azure ポータルのホームページで、[**リソースの作成**] を選�
 
 以下のように設定の詳細を入力してロジックアプリを作成します:
 
-- **名前:** 犬の分類アプリに適した任意の名前を入力
-- **サブスクリプション:** 任意のサブスクリプションを選択
-- **リソースグループ:** このワークショップで使っているリソースグループを選択
-- **場所:** 任意の場所を選択
-- **Log Analytics:** Off
+* **名前:** 犬の分類アプリに適した任意の名前を入力
+* **サブスクリプション:** 任意のサブスクリプションを選択
+* **リソースグループ:** このワークショップで使っているリソースグループを選択
+* **場所:** 任意の場所を選択
+* **Log Analytics:** Off
 
 **作成** をクリックします。
 
@@ -306,18 +303,17 @@ Azure 認証情報を使用してサインインし、Azure Event Grid に接続
 接続して緑色のチェックマークが表示されたら、[続行]を選択します。
 
 以下のオプションを選択してください:
-
-- **Subscription:** サブスクリプション
-- **Resource Type:** Microsoft.Storage.StorageAccounts
-- **Resource Name:** 画像を置く用のストレージアカウントを選択 (例: ainightsstor)
-- **Event Type 項目 - 1:** Microsoft.Storage.BlobCreated
+* **Subscription:** サブスクリプション
+* **Resource Type:** Microsoft.Storage.StorageAccounts
+* **Resource Name:** 画像を置く用のストレージアカウントを選択 (例: ainightsstor)
+* **Event Type 項目 - 1:** Microsoft.Storage.BlobCreated
 
 ![Event Grid Options](docs-images/event-grid-options.JPG)
 
 [**新しいステップ**] を選択します。 **json** と入力して、候補の中から **JSON の解析** を選択します
 
-- **コンテンツ:** テキストボックスを選択すると右側に表示される [動的なコンテンツの追加] で、 **本文** を選択します
-- **スキーマ:** テキストボックスを選択し、[logic-app-schema file](sample-code/logic-app-task/logic-app-schema.txt) の JSON スキーマを貼りつけます
+* **コンテンツ:** テキストボックスを選択すると右側に表示される [動的なコンテンツの追加] で、 **本文** を選択します
+* **スキーマ:** テキストボックスを選択し、[logic-app-schema file](sample-code/logic-app-task/logic-app-schema.txt) の JSON スキーマを貼りつけます
 
 ![Parse JSON](docs-images/parse-json.JPG)
 
@@ -377,7 +373,7 @@ Logic Apps の画面に戻り、[Image URL] ボックスにカーソルを合わ
 
 ![Run Logic App to test](docs-images/run-logic-app.JPG)
 
-ここで、作成した画像ストレージアカウント (ainightsstor) に移動します（リソースグループから探すと簡単です）。**BLOB** を選択して、Blob を選択して 'images' コンテナーを選択します。'アップロード' ボタンがあるので、Dogs データテストセットフォルダーから任意の画像をアップロードします。
+ここで、作成した画像ストレージアカウント (ainightsstor) に移動します（リソースグループから探すと簡単です）。**BLOB** を選択して、Blobを選択して 'images' コンテナーを選択します。'アップロード' ボタンがあるので、Dogs データテストセットフォルダーから任意の画像をアップロードします。
 
 ![Upload Blob](docs-images/upload-blob.JPG)
 
@@ -388,14 +384,15 @@ Logic Apps の画面に戻り、[Image URL] ボックスにカーソルを合わ
 すべてのセクションに緑色のチェックマークが付いているはずです。各セクションを選択して、レイヤー間の入力と出力を表示できます（これは、正しく実行されなかった場合にデバッグするのにも最適な方法です）。
 
 > **訳注**
-> 2019 年 3 月末時点では、上記の Logic App を実行すると**Predict tags from image URL** でエラーが発生しています。  
-> これは Custom Vision の Prediction URL と Logic App の Predict tags コントロールとのバージョンに差異があるためです。  
-> 今後、Logic App 側が Custom Vision の新しいバージョン (v3.0) に対応することで上記の操作で犬種予測に成功するようになるはずです。  
-> 4 月 2 日の時点では、上記の手順でアプリケーションを作成するという理解までとしてください。
+2019年3月末時点では、上記の Logic App を実行すると**Predict tags from image URL** でエラーが発生しています。  
+これは Custom Vision の Prediction URL と Logic App の Predict tags コントロールとのバージョンに差異があるためです。  
+今後、Logic App 側が Custom Vision の新しいバージョン (v3.0) に対応することで上記の操作で犬種予測に成功するようになるはずです。  
+4月2日の時点では、上記の手順でアプリケーションを作成するという理解までとしてください。
+
 
 ![Logic app run successful](docs-images/explore-logic-app-run.JPG)
 
-最後に、'resultsainight' BLOB ストレージアカウントに移動して、BLOB を選択し、'results' コンテナーを開き、そこに作成されたファイルを確認します。ファイルの内容は、犬の画像から得られる、犬の予測クラス、信頼度スコア
+最後に、'resultsainight' BLOBストレージアカウントに移動して、BLOB を選択し、'results' コンテナーを開き、そこに作成されたファイルを確認します。ファイルの内容は、犬の画像から得られる、犬の予測クラス、信頼度スコア
 です。
 
 ![Result](docs-images/result.JPG)
