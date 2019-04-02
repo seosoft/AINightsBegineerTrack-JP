@@ -303,6 +303,7 @@ Azure 認証情報を使用してサインインし、Azure Event Grid に接続
 接続して緑色のチェックマークが表示されたら、[続行]を選択します。
 
 以下のオプションを選択してください:
+
 * **Subscription:** サブスクリプション
 * **Resource Type:** Microsoft.Storage.StorageAccounts
 * **Resource Name:** 画像を置く用のストレージアカウントを選択 (例: ainightsstor)
@@ -320,13 +321,11 @@ Azure 認証情報を使用してサインインし、Azure Event Grid に接続
 [**新しいステップ**] を選択します。'http' と入力して、**HTTP** を選択します。
 
 > **訳注**  
-次のステップの **HTTPコネクターの追加** は、[英語版](https://github.com/amynic/AINights)では別の手順(Custom VisionのPredict tags from image URLコネクターの追加) になっています。2019年4月1日現在、Custom Visionコネクターではエラーとなり正常に動作しません。  
-以下の手順通り、HTTPコネクターを追加してください。  
-なお、それ以降の手順の画像が Custom Visionコネクターのままですが、適宜読み替えてください。
+Custom Vision 専用のコネクターが存在しますが、2019/4時点では Custom Vision の API のバージョンアップに伴い一時的に利用ができなくなっているため、今回は HTTPのコネクターを利用しています。今後、利用ができるようになると思われますので、利用時は随時チェックしてみましょう。
 
 ![Select HTTP connector](docs-images/select-http-connector.jpg)
 
-Postman で確認したときと同様に **方法**(POST)、**URI**、**ヘッダー**を入力します。**本文** のところに 前のステップで作成した **JSON の解析** 結果から **url** を選択して埋め込みます。([本文] ボックスにカーソルを合わせると右側に表示される [動的なコンテンツの追加] で 'URL' を検索して選択します。)
+Postman で確認したときと同様に **方法**(POST)、**URI**、**ヘッダー**を入力します。**本文** には、前のステップで作成した **JSON の解析** 結果から **url** を選択して埋め込みます。([本文] ボックスにカーソルを合わせると右側に表示される [動的なコンテンツの追加] で 'URL' を検索して選択します。)
 
 ![HTTP Options](docs-images/http-connector-options.jpg)
 
@@ -337,66 +336,57 @@ Postman で確認したときと同様に **方法**(POST)、**URI**、**ヘッ�
 
 ![Parse JSON 2](docs-images/parse-json2.jpg)
 
-**for each** と入力して、'For each' という灰色のコントロールを選択します。選択したら、 '以前の手順から出力を選択' を選択し、'動的なコンテンツ' から **Predictions** を選択します。
+[**新しいステップ**]をクリックします。**for each** と入力して、'For each' という灰色のコントロールを選択します。
 
-![For each prediction](docs-images/for-each-prediction-add-action.JPG)
-
-**アクションの追加** を選択します。
-
-'制御' と入力して検索して、**制御** アイコンを選択して、その中の **条件** を選択します。
-
+* 以前の手順から出力を選択: [動的なコンテンツの追加] を選択し、**JSON の解析 2** の中の **predictions** を選択します。
+![For each prediction](docs-images/for-each-prediction.JPG)
+* **アクションの追加** を選択します。
+* '制御' と入力して検索し、**制御** アイコンを選択して、その中の **条件** を選択します。
 ![If Statement](docs-images/if-statement.JPG)
 
-条件ボックスで、'値の選択' をクリックし、[動的なコンテンツの追加] で **JSON の解析2** から **Probability** を選択します。
+条件ボックスでは
 
-条件として '次の値以上' を選択し、'値の選択' に **0.7** と入力します。
-
-![For Each Options](docs-images/for-each-options.jpg)
+* '値の選択' をクリックし、[動的なコンテンツの追加] で **JSON の解析2** から **Probability** を選択します。
+* 条件として '次の値以上' を選択します。
+* '値の選択' に **0.7** と入力します。
+![For Each Options](docs-images/probability.JPG)
 
 **true の場合** 内の **アクションの追加** を選択します。
 
-'Azure Blob Storage' で検索して、**Azure Blob Storage** アイコンを選択し、**BLOB の作成** を選択します。
-
-接続名に **results** と入力し、'ストレージアカウント' には、先ほど結果を置く用に作成したストレージアカウントを選択します。
-
+* 'Azure Blob Storage' で検索して、**Azure Blob Storage** アイコンを選択し、**BLOB の作成** を選択します。
+* 接続名に **results** と入力し、'ストレージアカウント' には、先ほど結果を置く用に作成したストレージアカウントを選択します。
 ![Connect to Result Blob Storage](docs-images/result-blob-connection.JPG)
 
-'フォルダーのパス' で右端にあるフォルダーアイコンを選択し、'results' を選択します。
-
-'BLOB 名' フィールドに '**result-**' と入力し、[動的なコンテンツの追加] で **JSON の解析2** から **Id** を選択します。
-
-'BLOB コンテンツ' を選択し、[動的なコンテンツの追加] から で **JSON の解析2** の 'もっと見る' を選択します。その中で **tagName** を選択しします。その後ろに '**:**' と入力します。続いて[動的なコンテンツの追加]で **probability** を選択します。
+* 'フォルダーのパス':  右端にあるフォルダーアイコンを選択し、'results' を選択します。
+* 'BLOB 名' フィールド: '**result-**' と入力し、[動的なコンテンツの追加] で **JSON の解析2** から **Id** を選択します。最後に **.txt** と入力します。
+* 'BLOB コンテンツ':  [動的なコンテンツの追加] から で **JSON の解析2** の 'もっと見る' を選択します。その中で **tagName** を選択しします。その後ろに '**:**' と入力します。続いて[動的なコンテンツの追加]で **JSON の解析2** の 'もっと見る' の中から **probability** を選択します。
 
 ![For Each Options](docs-images/for-each-options.JPG)
 
-最後に、Logic Apps のアクションバーで **保存** を選択します。
-
+最後に、Logic Apps の上部のアクションバーで **保存** を選択します。
 保存に成功したら、出力をテストしてみましょう。アクションバーで **実行** を選択します。
 
 > **訳注** 実行すると '実行を表示するには、開始操作を実行してください' と表示されます。そのまま次の手順に進んでください。
 
 ![Run Logic App to test](docs-images/run-logic-app.JPG)
 
-ここで、作成した画像ストレージアカウント (ainightsstor) に移動します（リソースグループから探すと簡単です）。**BLOB** を選択して、Blobを選択して 'images' コンテナーを選択します。'アップロード' ボタンがあるので、Dogs データテストセットフォルダーから任意の画像をアップロードします。
+ここで、作成した画像ストレージアカウント (ainightsstor) に移動します（リソースグループから探すと簡単です）。**BLOB** を選択して、Blobを選択して 'images' コンテナーを選択します。'アップロード' ボタンがあるので、Dogs データテストセットフォルダーから任意の画像をアップロードします。Blobにファイルが保存されたのをトリガーに Logic Apps が起動します。
 
 ![Upload Blob](docs-images/upload-blob.JPG)
 
-アップロードできたら、Logic Apps のメインページに戻り、ページ下部の '実行の履歴' を見ます。'成功' した実行の入出力に移動します。
+Azure ポータルのLogic Apps のリソースを開き、概要を開きます。ページ下部の '実行の履歴' から '成功' した履歴をクリックします。
 
 ![Run History](docs-images/logic-app-run-history.JPG)
 
 すべてのセクションに緑色のチェックマークが付いているはずです。各セクションを選択して、レイヤー間の入力と出力を表示できます（これは、正しく実行されなかった場合にデバッグするのにも最適な方法です）。
 
-> **訳注**
-2019年4月1日現在、Logic App で **Predict tags from image URL** を仕様すると実行時にエラーが発生します。  
-これは Custom Vision の Prediction URL と Logic App の Predict tags コントロールとのバージョンに差異があるためです。  
-今後、Logic App 側が Custom Vision の新しいバージョン (v3.0) に対応することで上記の操作で犬種予測に成功するようになるはずです。  
-4月2日の時点では、日本語版の手順通り、HTTPコネクターを使用してください。
-
-
 ![Logic app run successful](docs-images/explore-logic-app-run.JPG)
 
-最後に、'resultsainight' BLOBストレージアカウントに移動して、BLOB を選択し、'results' コンテナーを開き、そこに作成されたファイルを確認します。ファイルの内容は、犬の画像から得られる、犬の予測クラス、信頼度スコア
-です。
+最後に、'resultsainight' BLOBストレージアカウントに移動して、BLOB を選択し、'results' コンテナーを開き、そこに作成されたファイルを確認します。ファイルの内容は、犬の画像から得られた予測のタグと信頼度スコアです。
 
 ![Result](docs-images/result.JPG)
+
+## リソースの削除
+
+最後に、この後これらのリソースが必要ない場合は、リソースグループを削除することで、その中にある複数のリソースを一括で削除できます。
+このワークショップのリソースグループを選択し、[削除]を選択してから、削除するリソースグループの名前を確認します。
