@@ -292,7 +292,7 @@ Azure ポータルのホームページで、[**リソースの作成**] を選�
 
 ![Logic App Option](docs-images/create-logic-app.JPG)
 
-作成したら、リソースに移動します。ここから、ロジックプロセスを作成するします。左側のメニューから [**ロジックアプリデザイナー**] を選択し、次に [**Event Grid のリソースイベントが発生するとき**] を選択します。
+作成したら、リソースに移動します。ここから、ロジックプロセスを作成します。左側のメニューから [**ロジックアプリデザイナー**] を選択し、次に [**Event Grid のリソースイベントが発生するとき**] を選択します。
 
 ![Logic App Trigger](docs-images/logic-app-trigger.JPG)
 
@@ -332,7 +332,7 @@ Postman で確認したときと同様に **方法**(POST)、**URI**、**ヘッ�
 [**新しいステップ**]をクリックします。再び **JSON の解析** を選択します。
 
 - コンテンツ: テキストボックスを選択すると右側に表示される [動的なコンテンツの追加] で、 **HTTP** の結果から **本文** を選択します
-- スキーマ: [サンプルのペイロードを使用して...] をクリックし、[customvision-schema file](sample-code/logic-app-task/customvision_schema.txt) の JSON スキーマを貼りつけます。
+- スキーマ: [customvision-schema file](sample-code/logic-app-task/customvision_schema.txt) の JSON スキーマを貼りつけます。
 
 ![Parse JSON 2](docs-images/parse-json2.jpg)
 
@@ -346,10 +346,10 @@ Postman で確認したときと同様に **方法**(POST)、**URI**、**ヘッ�
 
 条件ボックスでは
 
-* '値の選択' をクリックし、[動的なコンテンツの追加] で **JSON の解析2** から **Probability** を選択します。
+* '値の選択' をクリックし、[動的なコンテンツの追加] で **JSON の解析2** から **probability** を選択します。
 * 条件として '次の値以上' を選択します。
 * '値の選択' に **0.7** と入力します。
-![For Each Options](docs-images/probability.JPG)
+![For Each Options-probability](docs-images/probability.JPG)
 
 **true の場合** 内の **アクションの追加** を選択します。
 
@@ -358,10 +358,10 @@ Postman で確認したときと同様に **方法**(POST)、**URI**、**ヘッ�
 ![Connect to Result Blob Storage](docs-images/result-blob-connection.JPG)
 
 * 'フォルダーのパス':  右端にあるフォルダーアイコンを選択し、'results' を選択します。
-* 'BLOB 名' フィールド: '**result-**' と入力し、[動的なコンテンツの追加] で **JSON の解析2** から **Id** を選択します。最後に **.txt** と入力します。
+* 'BLOB 名' フィールド: '**result-**' と入力し、[動的なコンテンツの追加] で **JSON の解析2** から **id** を選択します。最後に **.txt** と入力します。
 * 'BLOB コンテンツ':  [動的なコンテンツの追加] から で **JSON の解析2** の 'もっと見る' を選択します。その中で **tagName** を選択しします。その後ろに '**:**' と入力します。続いて[動的なコンテンツの追加]で **JSON の解析2** の 'もっと見る' の中から **probability** を選択します。
 
-![For Each Options](docs-images/for-each-options.JPG)
+![For Each Options](docs-images/for-each-options.jpg)
 
 最後に、Logic Apps の上部のアクションバーで **保存** を選択します。
 保存に成功したら、出力をテストしてみましょう。アクションバーで **実行** を選択します。
@@ -382,11 +382,11 @@ Azure ポータルのLogic Apps のリソースを開き、概要を開きます
 
 ![Logic app run successful](docs-images/explore-logic-app-run.JPG)
 
-最後に、'resultsainight' BLOBストレージアカウントに移動して、BLOB を選択し、'results' コンテナーを開き、そこに作成されたファイルを確認します。ファイルの内容は、犬の画像から得られた予測のタグと信頼度スコアです。
+最後に、'resultsainights' BLOBストレージアカウントに移動して、BLOB を選択し、'results' コンテナーを開き、そこに作成されたファイルを確認します。ファイルの内容は、犬の画像から得られた予測のタグと信頼度スコアです。
 
 ![Result](docs-images/result.JPG)
 
 ## リソースの削除
 
 最後に、この後これらのリソースが必要ない場合は、リソースグループを削除することで、その中にある複数のリソースを一括で削除できます。
-このワークショップのリソースグループを選択し、[削除]を選択してから、削除するリソースグループの名前を確認します。
+このワークショップのリソースグループを選択し、[リソースグループの削除]を選択してから、削除するリソースグループの名前を確認します。
