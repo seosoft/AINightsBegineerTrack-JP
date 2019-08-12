@@ -1,5 +1,8 @@
 # Global AI Nights - Beginner Track コンテンツ
 
+**お知らせ** このコンテンツは **アーカイブ** しました。  
+改訂版のコンテンツは [**こちら**](https://github.com/beachside-project/ai-nights-biggner-track-custom-vision) にあります。今後は改訂版のコンテンツをご利用ください。
+
 ## 参加者用ワークショップ
 
 ## セッション情報
